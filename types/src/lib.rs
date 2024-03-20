@@ -2,27 +2,52 @@ use marine_rs_sdk::marine;
 
 #[marine]
 #[derive(Clone, Debug)]
-pub struct ListResult {
-    /// True when the binary executed successfully.
+pub struct IpfsResult {
     pub success: bool,
-    /// Error message if the binary execution failed.
     pub error: String,
-    /// List of files in the provided directory.
-    pub result: Vec<String>,
 }
 
-impl<E: ToString> From<Result<Vec<String>, E>> for ListResult {
-    fn from(res: Result<Vec<String>, E>) -> Self {
+impl<A, E: ToString> From<Result<A, E>> for IpfsResult {
+    fn from(result: Result<A, E>) -> Self {
+        result.err().into()
+    }
+}
+
+impl<E: ToString> From<Option<E>> for IpfsResult {
+    fn from(res: Option<E>) -> Self {
         match res {
-            Ok(result) => ListResult {
+            None => IpfsResult {
+                success: true,
+                error: String::new(),
+            },
+            Some(err) => IpfsResult {
+                success: false,
+                error: err.to_string(),
+            },
+        }
+    }
+}
+
+#[marine]
+#[derive(Clone, Debug)]
+pub struct IpfsAddResult {
+    pub success: bool,
+    pub error: String,
+    pub hash: String,
+}
+
+impl<E: ToString> From<Result<String, E>> for IpfsAddResult {
+    fn from(result: Result<String, E>) -> Self {
+        match result {
+            Ok(hash) => Self {
                 success: true,
                 error: "".to_string(),
-                result,
+                hash,
             },
-            Err(e) => ListResult {
+            Err(err) => Self {
                 success: false,
-                error: e.to_string(),
-                result: vec![],
+                error: err.to_string(),
+                hash: "".to_string(),
             },
         }
     }

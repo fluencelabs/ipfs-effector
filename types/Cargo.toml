@@ -1,5 +1,5 @@
 [package]
-name = "ls-effector-types"
+name = "ipfs-effector-types"
 version = "0.1.2"
 edition = "2021"
 publish = false

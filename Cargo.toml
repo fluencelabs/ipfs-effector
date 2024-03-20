@@ -6,16 +6,16 @@ members = [ "effector", "types", "cid", "imports" ]
   marine-rs-sdk-test = "0.16.1"
   eyre = "0.6.12"
 
-    [workspace.dependencies.ls-effector-types]
+    [workspace.dependencies.ipfs-effector-types]
     path = "types"
 
-    [workspace.dependencies.ls-effector-imports]
+    [workspace.dependencies.ipfs-effector-imports]
     path = "imports"
 
-    [workspace.dependencies.ls_effector]
+    [workspace.dependencies.ipfs_effector]
     path = "effector"
 
-    [workspace.dependencies.ls-effector-cid]
+    [workspace.dependencies.ipfs-effector-cid]
     path = "cid"
 
     [workspace.dependencies.marine-rs-sdk]

@@ -8,7 +8,7 @@ fn main() {
 
     let out_dir = std::env::var("OUT_DIR").expect("OUT_DIR not set");
     let target_cid_file = "cidv1";
-    let wasm_path = "../target/wasm32-wasi/release/ls_effector.wasm";
+    let wasm_path = "../target/wasm32-wasi/release/ipfs_effector.wasm";
 
     println!("cargo:rerun-if-changed={}", wasm_path);
 

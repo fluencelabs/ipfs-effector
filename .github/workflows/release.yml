@@ -101,4 +101,4 @@ jobs:
         with:
           tag_name: ${{ needs.release-please.outputs.tag-name }}
           files: |
-            ./ls_effector.tar.gz
+            ./ipfs_effector.tar.gz
