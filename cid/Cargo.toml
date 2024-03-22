@@ -4,6 +4,12 @@ version = "0.1.2"
 edition = "2021"
 build = "built.rs"
 publish = true
+include = [ "src", "Cargo.toml", "built.rs", "artifacts" ]
+description = "IPFS Effector Wasm CIDv1"
+license = "Apache-2.0"
+authors = ["Fluence Labs"]
+repository = "https://github.com/fluencelabs/ipfs-effector"
+
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 [dependencies]

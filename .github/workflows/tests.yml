@@ -1,4 +1,4 @@
-name: "tests"
+name: Tests
 
 on:
   pull_request:
@@ -16,7 +16,7 @@ on:
 
 jobs:
   unit-tests:
-    name: "Run unit tests"
+    name: Run unit tests
     runs-on: ubuntu-latest
 
     steps:
@@ -29,8 +29,7 @@ jobs:
       - name: Setup fcli
         uses: fluencelabs/setup-fluence@v1
         with:
-          # TODO: fluence module build now only in main, need to change later
-          version: main
+          version: 0.15.28
 
       - name: Setup Rust toolchain
         uses: dsherret/rust-toolchain-file@v1
@@ -43,3 +42,6 @@ jobs:
 
       - name: Run tests
         run: ./test.sh
+
+      - name: Validate
+        run: ./validate.sh
