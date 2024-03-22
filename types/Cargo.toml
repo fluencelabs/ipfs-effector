@@ -2,7 +2,7 @@
 name = "ipfs-effector-types"
 version = "0.1.2"
 edition = "2021"
-publish = false
+publish = true
 description = "IPFS Effector Types"
 license = "Apache-2.0"
 authors = ["Fluence Labs"]
