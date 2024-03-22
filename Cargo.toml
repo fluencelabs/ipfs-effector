@@ -8,15 +8,19 @@ members = [ "effector", "types", "cid", "imports" ]
 
     [workspace.dependencies.ipfs-effector-types]
     path = "types"
+    version = "0.1.0"
 
     [workspace.dependencies.ipfs-effector-imports]
     path = "imports"
+    version = "0.1.0"
 
     [workspace.dependencies.ipfs_effector]
     path = "effector"
+    version = "0.1.0"
 
     [workspace.dependencies.ipfs-effector-cid]
     path = "cid"
+    version = "0.1.0"
 
     [workspace.dependencies.marine-rs-sdk]
     version = "0.14.0"
