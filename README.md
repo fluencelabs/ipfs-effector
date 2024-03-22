@@ -19,3 +19,35 @@ To build the project, you need:
 
 The build.sh bash script located in the repository's root contains the commands to build the effector module and the cid crate.
 The test.sh bash script located in the repository's root contains the commands to run tests in the effector module.
+
+### Interface
+
+The `ipfs-effector-imports` provides the following interface:
+```rust
+#[marine]
+#[derive(Clone, Debug)]
+pub struct IpfsResult {
+    /// True when the operation is successful
+    pub success: bool,
+    /// Contains an error message when `success` is false
+    pub error: String,
+}
+
+#[marine]
+#[derive(Clone, Debug)]
+pub struct IpfsAddResult {
+    /// True when the operation is successful
+    pub success: bool,
+    /// Contains an error message when `success` is false
+    pub error: String,
+    /// CIDv1 of the uploaded file
+    pub hash: String,
+}
+
+
+// Upload a file `input_vault_path` to IPFS node with the `api_multiaddr` multiaddress
+pub fn add(api_multiaddr: String, input_vault_path: String) -> IpfsAddResult;
+
+// Downloads a file by `cid` to the `output_vault_path` file from IPFS node with the `api_multiaddr` multiaddress
+pub fn get(api_multiaddr: String, cid: String, output_vault_path: &str) -> IpfsResult;
+```
