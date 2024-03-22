@@ -1,8 +1,13 @@
 [package]
-name = "ls-effector-types"
+name = "ipfs-effector-types"
 version = "0.1.2"
 edition = "2021"
-publish = false
+publish = true
+description = "IPFS Effector Types"
+license = "Apache-2.0"
+authors = ["Fluence Labs"]
+repository = "https://github.com/fluencelabs/ipfs-effector"
+
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 

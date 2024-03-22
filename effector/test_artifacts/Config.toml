@@ -1,11 +1,11 @@
 total_memory_limit = "Infinity"
 
 [[module]]
-name = "ls_effector"
-load_from = "../../target/wasm32-wasi/release/ls_effector.wasm"
+name = "ipfs_effector"
+load_from = "../../target/wasm32-wasi/release/ipfs_effector.wasm"
 logger_enabled = true
 
 [module.wasi.mapped_dirs]
 "/tmp/vault" = "./test_artifacts/temp"
 [module.mounted_binaries]
-ls = "/bin/ls"
+ipfs = "/usr/bin/ipfs"

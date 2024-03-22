@@ -4,7 +4,7 @@ pub mod build_info {
     include!(concat!(env!("OUT_DIR"), "/built.rs"));
 }
 
-pub const EFFECTOR_CID: &'static str = include_str!(concat!(env!("OUT_DIR"), "/cidv1"));
+pub const EFFECTOR_CID: &'static str = include_str!("../artifacts/cidv1");
 
 #[cfg(test)]
 mod tests {

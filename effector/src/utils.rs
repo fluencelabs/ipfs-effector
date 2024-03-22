@@ -68,3 +68,48 @@ fn get_host_vault_path(vault_prefix: &str) -> eyre::Result<String> {
 fn format_particle_dir(particle: &ParticleParameters) -> String {
     format!("{}-{}", particle.id, particle.token)
 }
+
+#[cfg(test)]
+mod unit_tests {
+    use crate::utils::inject_vault_host_path;
+    use marine_rs_sdk::ParticleParameters;
+    use std::assert_matches::assert_matches;
+
+    #[test]
+    fn test_inject() {
+        let mut particle = ParticleParameters::default();
+        particle.id = "test_id".to_string();
+        particle.token = "token".to_string();
+
+        let real_vault_prefix = "/real/storage";
+
+        let result = inject_vault_host_path(
+            &particle,
+            real_vault_prefix,
+            "/tmp/vault/test_id-token/input.json",
+        );
+        assert_matches!(result, Ok(_));
+        assert_eq!(result.unwrap(), "/real/storage/test_id-token/input.json");
+
+        let result = inject_vault_host_path(&particle, real_vault_prefix, "input.json");
+        assert_matches!(result, Ok(_));
+        assert_eq!(result.unwrap(), "/real/storage/test_id-token/input.json");
+
+        let result = inject_vault_host_path(&particle, real_vault_prefix, "/etc/passwd");
+        assert_matches!(result, Err(_), "non-vault paths are forbidden");
+
+        let result = inject_vault_host_path(
+            &particle,
+            real_vault_prefix,
+            "/tmp/vault/test_id2-token2/input.json",
+        );
+        assert_matches!(
+            result,
+            Err(_),
+            "paths in vaults of other particles are also forbidden"
+        );
+
+        let result = inject_vault_host_path(&particle, real_vault_prefix, "vault_dir/input.json");
+        assert_matches!(result, Err(_), "only filenames in the vault are allowed");
+    }
+}

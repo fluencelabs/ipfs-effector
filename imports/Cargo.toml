@@ -1,11 +1,16 @@
 [package]
-name = "ls-effector-imports"
+name = "ipfs-effector-imports"
 version = "0.1.2"
 edition = "2021"
 publish = true
+description = "IPFS Effector Imports"
+license = "Apache-2.0"
+authors = ["Fluence Labs"]
+repository = "https://github.com/fluencelabs/ipfs-effector"
+
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-ls-effector-types = { workspace = true }
+ipfs-effector-types = { workspace = true }
 marine-rs-sdk = { workspace = true }
