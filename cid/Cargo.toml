@@ -1,6 +1,6 @@
 [package]
 name = "ipfs-effector-cid"
-version = "0.1.2"
+version = "0.1.0"
 edition = "2021"
 build = "built.rs"
 publish = true
