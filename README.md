@@ -5,9 +5,9 @@ In this project, we provide an effector for [IPFS CLI](https://docs.ipfs.tech/in
 ### Project Structure
 
 This project consists of 4 crates:
-- `effector` is the effector module itself. To obtain the correct WASM module, it must be built with marine build --release ;
+- `effector` is the effector module itself. To obtain the correct WASM module, it must be built with marine build `--release`;
 - `cid` is a rust crate for exporting the [CID](https://docs.ipfs.tech/concepts/content-addressing/#version-1-v1) of the effector module. This crate is optional and only provides means to embed CIDs of selected effectors into your rust project, for example, [Nox](https://github.com/fluencelabs/nox);
-- `types` is a rust crate with the type definitions used in the API functions of the effector module (the one with the #[marine] tag). This crate helps to interact with the effector module's API in non-effector modules. However, this crate isn't supposed to be used on its own outside of the effector crate scope; it's re-exported by the imports crate below;
+- `types` is a rust crate with the type definitions used in the API functions of the effector module (the one with the `#[marine]` tag). This crate helps to interact with the effector module's API in non-effector modules. However, this crate isn't supposed to be used on its own outside of the effector crate scope; it's re-exported by the imports crate below;
 - `imports` is a rust crate providing the type definitions (via the types crate) as well as effector module's [import definition](https://fluence.dev/docs/marine-book/marine-rust-sdk/developing/import-functions). This crate is aimed to help import the effector modules without copy-pasting the definitions manually.
 
 ### How to build
